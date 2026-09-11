@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>냉장고 파먹기</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🧊 냉장고 파먹기</h1>
+      <p>식재료를 남겨 버리지 않도록 잘 활용해보세요!</p>
+    </header>
+
+    <!-- STEP 1 & 2: 재료 입력 세션 -->
+    <section class="card input-section">
+      <h2>📝 [재료 기입하기]</h2>
+      <form id="ingredient-form">
+        <div class="input-group">
+          <!-- datalist를 연동하여 입력 도중 자동완성 및 실존 재료 가이드 제공 -->
+          <input type="text" id="ing-name" list="valid-ingredients" placeholder="재료명 (예: 계란, 대파)" required autocomplete="off">
+          <datalist id="valid-ingredients">
+            <!-- JS에서 자동 채워짐 -->
+          </datalist>
+          
+          <input type="text" id="ing-qty" placeholder="수량/양 (예: 2개, 100g)" required>
+          <input type="date" id="ing-expiry" required>
+          <button type="submit" class="btn-add">재료 추가</button>
+        </div>
+        <p id="error-msg" class="error-msg hidden"></p>
+      </form>
+
+      <!-- 추가된 재료 목록 -->
+      <div class="ingredient-list-container">
+        <h3>내 냉장고 속 재료 목록</h3>
+        <ul id="ingredient-list">
+          <li class="empty-msg">등록된 재료가 없습니다. 재료를 추가해주세요!</li>
+        </ul>
+      </div>
+
+      <!-- 추천 받기 버튼 -->
+      <button id="btn-submit" class="btn-submit" disabled>🍳 만들기!</button>
+    </section>
+
+    <!-- STEP 3 & 4: 레시피 추천 및 상세 결과 -->
+    <section id="result-section" class="card result-section hidden">
+      <h2>👨‍🍳 AI 추천 레시피</h2>
+      <p class="subtitle">소비기한이 임박한 재료를 우선적으로 활용한 요리입니다.</p>
+      
+      <div id="recipe-list" class="recipe-grid">
+        <!-- JS로 동적 생성 -->
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
